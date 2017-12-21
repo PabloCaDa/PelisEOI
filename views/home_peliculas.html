@@ -1,0 +1,184 @@
+<div class="black-screen">
+    <nav>
+        <div class="container">
+            <div class="row navbar-row" ng-controller="HomeController">
+                <div class="navbar-img col-lg-2">
+                    <a href=""><img src="/IMG/Logo.png" alt="Imagen logo"></a>
+                </div>
+                <div class="col-lg-6 navbar-menu">
+                    <ul>
+                        <li><a href="" ng-click="homeCtrl.getDiscFilms()">Discover</a></li>
+                        <li><a href="" ng-click="homeCtrl.getProxFilms();homeCtrl.upcomingStatus = 'on'"; >Upcoming</a></li>
+                        <li><a href="">Favourites</a></li>
+                        <li><a href="">To watch</a></li>
+                        <li><a href="">Watched</a></li>
+
+                    </ul>
+                </div>
+                <div class="col-lg-4 input-group navbar-browser">
+
+                    <input type="text" class="form-control" placeholder="Find your favourite movie" aria-label="Username" aria-describedby="basic-addon1" ng-keyup="homeCtrl.getSearch(homeCtrl.query)" ng-model="homeCtrl.query">
+                </div>
+
+
+            </div>
+        </div>
+    </nav>
+
+
+
+    <section id="main-content">
+        <div class="container">
+            <div class="row">
+                <div id="filter" class="col-lg-3 filters">
+                    <div class="filters-header col-lg-12">
+                        <div class="filter-icon">
+                            <img src="../IMG/Refine_Icon.png" alt="" width="27" heigth="25">
+                        </div>
+                        <button class="borrar pull-right" ng-click="homeCtrl.clearFilter()">Clear Filters</button>
+                    </div>
+                    <div class="filters-label col-lg-12">
+                        <p>Year</p>
+                        <!--                    <span class="badge badge-year">1979 - 2017</span>-->
+                        <span class="badge badge-year">{{homeCtrl.filter.year}}</span>
+                    </div>
+                    <div class="filters-numbers col-lg-12">
+                        <input type="range" min="1979" max="2017" value="" class="slider" id="myRange" step="1" ng-model="homeCtrl.filter.year" ng-mouseup="homeCtrl.getFilterFilms(homeCtrl.filter)">
+                    </div>
+                    <div class="filters-label col-lg-12">
+                        <p>Valoration</p>
+                        <!--                    <span class="badge badge-val">0 - 10</span>-->
+                        <span class="badge badge-val">{{homeCtrl.filter.val}}</span>
+                    </div>
+                    <div class="filters-numbers col-lg-12">
+                        <input type="range" min="0" max="10" step="0.2" value="" class="slider" id="myRange" ng-model="homeCtrl.filter.val" ng-mouseup="homeCtrl.getFilterFilms(homeCtrl.filter)">
+                    </div>
+
+                    <div class="filters-label col-lg-12">
+
+                        <p>Genres</p>
+
+                    </div>
+                    <div class="filter-gender col-lg-12">
+                        <div ng-repeat="genre in homeCtrl.genres track by $index">
+
+                            <button ng-class="{marked : homeCtrl.isSelected(genre.id)}" ng-click="homeCtrl.addgenre(genre.id); homeCtrl.getFilterFilms(homeCtrl.filter)">{{genre.name}}</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-9 display" id="display">
+                    <div class="display-header">
+                        <p>{{homeCtrl.movies.total_results}} movies found</p>
+                        <div class="dropdown">
+
+
+                            <button class="dropdown-toggle" type="button" data-toggle="dropdown">Popular movies
+    <span class="caret"></span></button>
+
+                            <ul class="dropdown-menu">
+                                <div ng-repeat="order in homeCtrl.orders track by $index">
+                                    <li><a href="" ng-click="homeCtrl.getOrder(order.method)">{{order.title}}</a></li>
+                                </div>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="display-content">
+                        <div class="movie-repeater" ng-repeat="movie in homeCtrl.movies.results" ng-click="homeCtrl.modalOn()">
+                            <a ng-click="homeCtrl.getInfo(movie.id)">
+                                <div class="black-layer" data-content="{{movie.vote_average}}">
+                                    <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="">
+                                </div>
+
+                            </a>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="modal-box {{homeCtrl.modalStatus}} col-lg-12">
+    <div class="col-lg-2 modal-closure" ng-click="homeCtrl.modalStatus = 'off'">
+
+    </div>
+    <div class="modal-data col-lg-10" ng-cloak>
+        <div class="modal-header container">
+            <h2>{{homeCtrl.movie.title}} <small>{{homeCtrl.movie.year}}</small></h2>
+            <a href="" class="btn close pull-right" ng-click="homeCtrl.modalStatus = 'off';homeCtrl.movie={}"><img src="/IMG/close-md.png" alt="" width="46" height="46"></a>
+        </div>
+        <div class="row">
+            <div class="modal-body container">
+                <img class="col-lg-3" src="https://image.tmdb.org/t/p/w500/{{homeCtrl.movie.poster_path}}" alt="" ng-cloak>
+                <div class="modal-info">
+                    <div class="modal-info-header">
+                        <div class="runtime">
+                            <p>Sinopsis</p>
+                            <p class="pull-right">{{homeCtrl.movie.runtime}} mins</p>
+                        </div>
+
+                        <div class="genres-ratings">
+                            <div class="genres">
+                                <div class="genres-repeater" ng-repeat="genre in homeCtrl.movie.genres">
+                                    <badge>{{genre.name}}
+                                    </badge>
+
+                                </div>
+                            </div>
+                            <!--<div class="space col-lg-6"></div>-->
+                            <div class="ratings col-lg-2 pull-right">
+                                <img src="/IMG/Favorite.png" width="20" height="20">
+                                <badge>{{homeCtrl.ratings[0].Value}}</badge>
+                                <img src="/IMG/RotenTomatoes.png" alt="" width="20" height="20">
+                                <badge>{{homeCtrl.ratings[1].Value}}</badge>
+                                <img src="/IMG/popcorns.png" width="20" height="20">
+                                <badge>{{homeCtrl.movie.vote_average}}</badge>
+                            </div>
+                        </div>
+                        <div class="overview">
+                            <p>{{homeCtrl.movie.overview}}</p>
+                        </div>
+                    </div>
+
+                    <div class="trailer">
+                        <p ng-hide="(homeCtrl.movie.videos.results.length==0)">Trailer</p>
+                        <iframe src="{{homeCtrl.youtubeUrl(homeCtrl.movie.youtubeUrl)}}" frameborder="0" width="703" height="342" allowfullscreen gesture="media" allow="encrypted-media" ng-cloak></iframe>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="subs container">
+                <div class="subs col-lg-12">
+                    Subs: <a href="">en</a><a href="">es</a><a href="">de</a>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer container">
+            <p>Related movies</p>
+            <div class="related">
+                <div ng-repeat="recommended in homeCtrl.movie.recommendations">
+                    <a href="" ng-click="homeCtrl.getInfo(recommended.id)">
+                        <div class="black-layer" data-content="{{recommended.vote_average}}">
+                            <img ng-src="https://image.tmdb.org/t/p/original/{{recommended.poster_path}}" alt="" width="288" height="256">
+                        </div>
+                        <p>{{recommended.title}}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
