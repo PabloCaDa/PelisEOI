@@ -216,7 +216,8 @@
 
 
            $(window).scroll(function () {
-                if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+//                if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+                if(Math.floor($(window).scrollTop() + $(window).height()) == Math.floor($(document).height()*0.9 + 1)) {
                 if(homeCtrl.query != ""){
                 homeCtrl.page++;
                 FilmProvider.getSearchedFilms(homeCtrl.query,homeCtrl.page).then(loadNextPage,error).then(displayMovies,error);
