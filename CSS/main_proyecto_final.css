@@ -377,16 +377,11 @@ button.marked:hover{
     padding:0px;
     position:fixed;
     margin:0px;
-/*    animation: showup 0.25s linear;*/
+
 
 }
 
-/*
-@keyframes showup{
-    0% {top: -1080px;}
-    100% {top: 0px;}
-}
-*/
+
 
 
 
