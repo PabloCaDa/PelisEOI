@@ -109,6 +109,7 @@
 
         function getDiscFilms(page) {
             FilmProvider.getDiscoverFilms(page).then(displayMovies, error);
+
         }
 
         function getProxFilms() {
@@ -199,7 +200,8 @@
         }
 
         function clearFilter() {
-            getDiscFilms();
+            homeCtrl.page=1;
+            getDiscFilms(homeCtrl.page);
             homeCtrl.filter = {
                 year: "",
                 val: "",

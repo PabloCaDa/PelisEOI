@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-lg-6 navbar-menu">
                     <ul>
-                        <li><a href="" ng-click="homeCtrl.getDiscFilms()">Discover</a></li>
+                        <li><a href="" ng-click="homeCtrl.clearFilter()">Discover</a></li>
                         <li><a href="" ng-click="homeCtrl.getProxFilms();homeCtrl.upcomingStatus = 'on'"; >Upcoming</a></li>
                         <li><a href="">Favourites</a></li>
                         <li><a href="">To watch</a></li>
@@ -38,16 +38,16 @@
                         <button class="borrar pull-right" ng-click="homeCtrl.clearFilter()">Clear Filters</button>
                     </div>
                     <div class="filters-label col-lg-12">
-                        <p>Year</p>
-                        <!--                    <span class="badge badge-year">1979 - 2017</span>-->
+                        <p>Year ></p>
+
                         <span class="badge badge-year">{{homeCtrl.filter.year}}</span>
                     </div>
                     <div class="filters-numbers col-lg-12">
                         <input type="range" min="1979" max="2017" value="" class="slider" id="myRange" step="1" ng-model="homeCtrl.filter.year" ng-mouseup="homeCtrl.getFilterFilms(homeCtrl.filter)">
                     </div>
                     <div class="filters-label col-lg-12">
-                        <p>Valoration</p>
-                        <!--                    <span class="badge badge-val">0 - 10</span>-->
+                        <p>Valoration ></p>
+
                         <span class="badge badge-val">{{homeCtrl.filter.val}}</span>
                     </div>
                     <div class="filters-numbers col-lg-12">
