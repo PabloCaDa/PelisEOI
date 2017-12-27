@@ -27,7 +27,7 @@
         }
 
         function errorMessage() {
-            console.log("Conection Failure");
+            console.log("Ratings Conection Failure");
         }
     }
 })();
