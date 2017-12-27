@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row navbar-row" ng-controller="HomeController">
                 <div class="navbar-img col-lg-2">
-                    <a href="" ng-click="homeCtrl.getDiscFilms()"><img src="img/Logo.png" alt="Imagen logo"></a>
+                    <a href="" ng-click="homeCtrl.getDiscFilms()"><img src="https://raw.githubusercontent.com/PabloCaDa/PelisEOI/master/IMG/Logo.png" alt="Imagen logo"></a>
                 </div>
                 <div class="col-lg-6 navbar-menu">
                     <ul>
@@ -33,7 +33,7 @@
                 <div id="filter" class="col-lg-3 filters">
                     <div class="filters-header col-lg-12">
                         <div class="filter-icon">
-                            <img src="../img/Refine_Icon.png" alt="" width="27" heigth="25">
+                            <img src="https://raw.githubusercontent.com/PabloCaDa/PelisEOI/master/IMG/Refine_Icon.png" alt="" width="27" heigth="25">
                         </div>
                         <button class="borrar pull-right" ng-click="homeCtrl.clearFilter()">Clear Filters</button>
                     </div>
@@ -114,7 +114,7 @@
     <div class="modal-data col-lg-10" ng-cloak>
         <div class="modal-header container">
             <h2>{{homeCtrl.movie.title}} <small>{{homeCtrl.movie.year}}</small></h2>
-            <a href="" class="btn close pull-right" ng-click="homeCtrl.modalStatus = 'off';homeCtrl.movie={}"><img src="/img/close-md.png" alt="" width="46" height="46"></a>
+            <a href="" class="btn close pull-right" ng-click="homeCtrl.modalStatus = 'off';homeCtrl.movie={}"><img src="https://raw.githubusercontent.com/PabloCaDa/PelisEOI/master/IMG/close-md.png" alt="" width="46" height="46"></a>
         </div>
         <div class="row">
             <div class="modal-body container">
@@ -136,11 +136,11 @@
                             </div>
                             <!--<div class="space col-lg-6"></div>-->
                             <div class="ratings col-lg-2 pull-right">
-                                <img src="/img/Favorite.png" width="20" height="20">
+                                <img src="https://raw.githubusercontent.com/PabloCaDa/PelisEOI/master/IMG/Favorite.png" width="20" height="20">
                                 <badge>{{homeCtrl.ratings[0].Value}}</badge>
-                                <img src="/img/RotenTomatoes.png" alt="" width="20" height="20">
+                                <img src="https://raw.githubusercontent.com/PabloCaDa/PelisEOI/master/IMG/RotenTomatoes.png" alt="" width="20" height="20">
                                 <badge>{{homeCtrl.ratings[1].Value}}</badge>
-                                <img src="/img/popcorns.png" width="20" height="20">
+                                <img src="https://raw.githubusercontent.com/PabloCaDa/PelisEOI/master/IMG/popcorns.png" width="20" height="20">
                                 <badge>{{homeCtrl.movie.vote_average}}</badge>
                             </div>
                         </div>
