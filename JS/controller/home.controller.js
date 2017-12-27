@@ -128,8 +128,8 @@
         }
 
         function getInfo(id) {
-            FilmProvider.getOneFilm(id).then(loadMovie, error).then(RatingsProvider.getRating, error).then(loadRatings, error).then(FilmProvider.getRecommended, error).then(loadRecom, error).then(displayMovie, error);
-
+            FilmProvider.getOneFilm(id).then(loadMovie, error).then(FilmProvider.getRecommended, error).then(loadRecom, error).then(displayMovie, error);
+//.then(RatingsProvider.getRating, error).then(loadRatings, error)
         }
 
         function getOrder(method){
