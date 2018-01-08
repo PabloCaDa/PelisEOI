@@ -7,8 +7,8 @@ was able to reduce the lenght of my code and to improve the efficiency of the we
 -----How is it works?-----
 
 by default, the first time you visit the website you will find a list with the more popular movies of the date. Then you can browse through 
-diferent options, like Upcoming Films to display incoming films in next months or you also can filter by name, year, and valoration
-if you want to make a more exhaustive search. 
+diferent options, like Upcoming Films to display incoming films in next months or you also can filter by name, year, valoration and genre
+if you want to carry out a more exhaustive search. 
 
 Of course, everytime you click into a movie, a modal will appear and bring you information about the film, such as title, duration, 
 synopsis, trailer and related movies. 
